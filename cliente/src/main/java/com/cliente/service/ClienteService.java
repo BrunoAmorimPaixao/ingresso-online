@@ -4,5 +4,5 @@ import com.cliente.model.Cliente;
 
 public interface ClienteService {
 
-    Cliente save(Cliente Cliente, Long idCliente);
+    Cliente save(Cliente Cliente);
 }

@@ -28,7 +28,7 @@ public class ClienteController {
     public ClienteDTO create(@RequestBody @Valid ClienteDTO dto) {
         log.info(" criando um  agência com número: {} ", dto.getNome());
         Cliente entity = modelMapper.map(dto,  Cliente.class);
-        entity =  service.save(entity, dto.getId());
+        entity =  service.save(entity);
         return modelMapper.map(entity,  ClienteDTO.class);
     }
 
