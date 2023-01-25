@@ -2,6 +2,7 @@ package com.cliente.controller;
 
 import com.cliente.dto.ClienteDTO;
 import com.cliente.model.Cliente;
+import com.cliente.service.ClienteService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,13 +21,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClienteController {
 
     private final ModelMapper modelMapper;
+    private final ClienteService service;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ClienteDTO create(@RequestBody @Valid ClienteDTO dto) {
         log.info(" criando um  agência com número: {} ", dto.getNome());
         Cliente entity = modelMapper.map(dto,  Cliente.class);
-        //entity =  service.save(entity, dto.getIdBanco());
+        entity =  service.save(entity, dto.getId());
         return modelMapper.map(entity,  ClienteDTO.class);
     }
 
